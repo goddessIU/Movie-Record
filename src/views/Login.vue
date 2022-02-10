@@ -67,7 +67,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         let res = storage.getItem(this.numberValidateForm.account);
-        if (valid && res && res.password === JSON.stringify(this.numberValidateForm.password) && !sessionStorage.getItem('user')) {
+        if (valid && res && res.password === JSON.stringify(this.numberValidateForm.password)) {
           sessionStorage.clearAll();
           sessionStorage.setItem(this.numberValidateForm.account);
           this.$refs.dialog.openDialog();

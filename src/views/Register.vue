@@ -102,7 +102,7 @@ export default {
             return false;
           } else {
             alert("注册成功");
-            storage.setItem(this.ruleForm.account, {password: this.ruleForm.pass});
+            storage.setItem(this.ruleForm.account, {password: this.ruleForm.pass, account: this.ruleForm.account});
             this.$router.push({ name: "login" });
           }
         } else {

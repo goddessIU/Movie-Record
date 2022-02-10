@@ -22,5 +22,10 @@ export default {
     },
     clearAll() {
         window.localStorage.clear();
+    },
+    addItem(key, val) {
+        let storage = this.getStorage();
+        Object.assign(storage[key], val);
+        window.localStorage.setItem(config.namespace, JSON.stringify(storage));
     }
 }

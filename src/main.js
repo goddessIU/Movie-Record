@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from '../src/router/index';
-import { Form, FormItem, Button, Input, Col, Row, Dialog, Header, Dropdown, DropdownMenu, DropdownItem, Table, TableColumn, Container, Main, Submenu, Aside, Menu, MenuItem, MenuItemGroup } from 'element-ui';
+import { Form, FormItem, Button, Input, Col, Row, Dialog, Header, Dropdown, DropdownMenu, DropdownItem, Table, TableColumn, Container, Main, Submenu, Aside, Menu, MenuItem, MenuItemGroup, Select, Option } from 'element-ui';
 import store from '../src/store/index';
 
 Vue.use(Form);
@@ -24,6 +24,8 @@ Vue.use(Aside);
 Vue.use(Menu);
 Vue.use(MenuItem);
 Vue.use(MenuItemGroup);
+Vue.use(Select);
+Vue.use(Option);
 
 Vue.config.productionTip = false
 

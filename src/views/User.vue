@@ -17,7 +17,7 @@
 
     <el-container>
       <el-header style="text-align: right; font-size: 12px">
-        <span>{{name}}您好，欢迎使用</span>
+        <span>{{ name }}您好，欢迎使用</span>
         <el-button>退出登录</el-button>
       </el-header>
       <el-main>
@@ -28,24 +28,31 @@
 </template>
 
 <script>
-import storage from "../utils/localStorage.js";
-import sessionStorage from '../utils/sessionStorage.js';
+import storage from "../utils/localStorage";
+import sessionStorage from "../utils/sessionStorage";
 export default {
   data() {
-    let user = storage.getItem(sessionStorage.getItem());
     return {
-      user,
-      isChoosed: 1,
+      isChoosed: 1
     };
   },
   computed: {
     name() {
-      let id = sessionStorage.getItem();
-      let name = storage.getItem(id).name;
-      return name || id;
+      return (
+        storage.getItem(JSON.stringify(sessionStorage.getItem())).name ||
+        sessionStorage.getItem()
+      );
+    },
+  },
+  mounted() {
+    if (this.$route.path.includes("total")) {
+      this.isChoosed = 1;
+    } else if (this.$route.path.includes("setting")) {
+      this.isChoosed = 2;
     }
   },
   watch: {
+    name: { function() {}, deep: true },
     $route() {
       if (this.$route.path.includes("total")) {
         this.isChoosed = 1;
