@@ -7,17 +7,22 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        id: sessionStorage.getItem(),
-        user: localStorage.getItem(sessionStorage.getItem()) || {}
-    },
-    actions: {
-        changeInformation({commit}, form) {
-            commit('CHANGEINFORMATION', form);
-        }
+        names: localStorage.getItem(JSON.stringify(sessionStorage.getItem())).names || []
     },
     mutations: {
-        CHANGEINFORMATION(state, {name, sex}) {
-            localStorage.setItem(state.id, { name, sex });
+        ADDCARD(state, {name}) {
+            let names = localStorage.getItem(JSON.stringify(sessionStorage.getItem())).names;
+            if (!names) {
+                localStorage.addItem(sessionStorage.getItem(), {names: []});
+            } 
+            names.push(name);
+            localStorage.addItem(sessionStorage.getItem(), { names });
+            state.names.push(name);
+        },
+        DELETECARD(state, index) {
+            let names = state.names;
+            names.splice(index, 1);
+            localStorage.addItem(sessionStorage.getItem(), { names });
         }
     }
 })

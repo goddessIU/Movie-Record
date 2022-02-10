@@ -15,11 +15,11 @@
       </el-menu>
     </el-aside>
 
-    <el-container>
+    <el-container class="total">
       <el-header style="text-align: right; font-size: 12px">
-        <span>{{ name }}您好，欢迎使用</span>
-        <el-button>退出登录</el-button>
+        <Header class="head" />
       </el-header>
+
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -28,21 +28,15 @@
 </template>
 
 <script>
-import storage from "../utils/localStorage";
-import sessionStorage from "../utils/sessionStorage";
+import Header from "../components/Header.vue";
 export default {
   data() {
     return {
-      isChoosed: 1
+      isChoosed: 1,
     };
   },
-  computed: {
-    name() {
-      return (
-        storage.getItem(JSON.stringify(sessionStorage.getItem())).name ||
-        sessionStorage.getItem()
-      );
-    },
+  components: {
+    Header
   },
   mounted() {
     if (this.$route.path.includes("total")) {
@@ -75,6 +69,12 @@ export default {
 <style lang="less">
 .chooseBgc {
   background-color: skyblue;
+}
+.total {
+  min-width: 500px;
+  .head {
+    // width: 100%;
+  }
 }
 .el-header {
   background-color: #b3c0d1;
