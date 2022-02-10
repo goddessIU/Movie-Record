@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import storage from '../utils/storage.js';
+import storage from '../utils/localStorage.js';
 export default {
   mounted() {
     this.$emit('change-choose2');

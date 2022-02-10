@@ -30,16 +30,12 @@ const routes = [
         path: '/user',
         name: 'user',
         component: () => import('../views/User.vue'),
+        redirect: '/user/total',
         children: [
             {
                 path: 'total',
                 name: 'total',
                 component: () => import('../views/Total.vue')
-            },
-            {
-                path: 'add',
-                name: 'add',
-                component: () => import('../views/Add.vue')
             },
             {
                 path: 'setting',

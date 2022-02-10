@@ -1,5 +1,5 @@
 <template>
-  <el-row class="total">
+  <el-row class="total" id="total">
     <el-row>
       <el-col :span="4" :offset="10">
         <a @click="toLogin" :class="{ bgc: choose === 0 }" >登录</a>
@@ -48,5 +48,25 @@ a {
 .bgc {
   color: rgb(98, 167, 194);
   border-top: 3px solid skyblue;
+}
+#total {
+  height: 100vh;
+  width: 100%;
+  background-image: url(../assets/images/bg.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  padding-top: 10%;
+  min-width: 800px;
+  div {
+    a {
+      color: #fff;
+      font-size: 20px;
+    }
+    .bgc {
+      color: rgb(98, 167, 194);
+      border-top: 3px solid skyblue;
+    }
+  }
 }
 </style>

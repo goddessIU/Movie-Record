@@ -46,7 +46,8 @@
 
 <script>
 import Dialog from '../components/Dialog.vue';
-import storage from '../utils/storage';
+import storage from '../utils/localStorage';
+import sessionStorage from '../utils/sessionStorage';
 export default {
   components: {
       Dialog
@@ -66,7 +67,9 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         let res = storage.getItem(this.numberValidateForm.account);
-        if (valid && res && res.password === JSON.stringify(this.numberValidateForm.password)) {
+        if (valid && res && res.password === JSON.stringify(this.numberValidateForm.password) && !sessionStorage.getItem('user')) {
+          sessionStorage.clearAll();
+          sessionStorage.setItem(this.numberValidateForm.account);
           this.$refs.dialog.openDialog();
         } else {
           return false;
