@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router';
 import Vue from 'vue';
+import sessionStorage from '../utils/sessionStorage';
 
 Vue.use(VueRouter);
 
@@ -50,8 +51,17 @@ const router = new VueRouter({
     routes
 })
 
-// router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
+    if (['login', 'register', 'home'].includes(to.name)) {
+        next();
+    } else {
+        if (sessionStorage.getItem()) {
+            next();
+        } else {
+            next({name: 'login'});
+        }
+    }
 
-// })
+})
 
 export default router;

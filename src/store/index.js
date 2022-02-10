@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        names: localStorage.getItem(JSON.stringify(sessionStorage.getItem())).names || []
+        names:   (localStorage.getItem(JSON.stringify(sessionStorage.getItem())) ? localStorage.getItem(JSON.stringify(sessionStorage.getItem())).names : []) || []
     },
     mutations: {
         ADDCARD(state, {name}) {
